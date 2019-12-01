@@ -44,6 +44,11 @@
                                     </div>
                                     <h4>{{$blog->title}}</h4>
                                     <p>{!! $blog->content !!}</p>
+                                    <hr>
+                                    <h4>Tags</h4>
+                                    @foreach($blogTags as $blogTag)
+                                        <a href="{{url('blog_tag/'.str_replace(' ','_',$blogTag->tag->title).'/'.$blogTag->tag->id)}}">{{$blogTag->tag->title}}</a>
+                                    @endforeach
                                 </div>
                             </div>
                         </article>

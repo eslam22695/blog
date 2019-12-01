@@ -36,9 +36,10 @@ class IndexController extends Controller
     
     public function blog_details($title,$id){
         $blog = Blog::find($id);
+        $blogTags = BlogTag::where('blog_id',$id)->get();
         $lasts = Blog::orderBy('id','desc')->take(6)->get();
         $tags = Tag::take(15)->get();
-        return view('front.details',compact('blog','lasts','tags'));
+        return view('front.details',compact('blog','blogTags','lasts','tags'));
     }
     
     public function blog_tag($title,$id){

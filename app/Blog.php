@@ -17,6 +17,10 @@ class Blog extends Model
         return $this->belongsTo('App\Admin','editor_id');
     }
 
+    public function tags(){
+        return \App\BlogTag::where('blog_id',$this->id)->get();
+    }
+
     public function comment_count(){
         return \App\Comment::where('blog_id',$this->id)->count();
     }
